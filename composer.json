@@ -1,0 +1,17 @@
+{
+    "name": "yukikusumi/my-tdd-project2",
+    "autoload": {
+        "psr-4": {
+            "Yukikusumi\\MyTddProject2\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "YukiKusumi",
+            "email": "79245623+YukiKusumi@users.noreply.github.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    }
+}
