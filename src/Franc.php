@@ -2,7 +2,7 @@
 
 namespace Yukikusumi\MyTddProject2;
 
-class Dollar extends Money
+class Franc extends Money
 {
     public function __construct(int $amount)
     {
