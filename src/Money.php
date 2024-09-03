@@ -4,24 +4,33 @@ namespace Yukikusumi\MyTddProject2;
 abstract class Money
 {
     protected int $amount;
+    protected string $currency;
 
     abstract public function times(int $multiplier): Money;
 
+    public function __construct(int $amount, string $currency)
+    {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+
+    public function currency(): string
+    {
+        return $this->currency;
+    }
+
     public function equals(self $other): bool
     {
-        if (!($other instanceof Money)){
-            return false;
-        }
-        return $this->amount === $other->amount;
+        return $this->amount === $other->amount && get_class($this) === get_class($other);
     }
 
     public static function dollar(int $amount): Money
     {
-        return new Dollar($amount);
+        return new Dollar($amount, "USD");
     }
 
     public static function franc(int $amount): Money
     {
-        return new Franc($amount);
+        return new Franc($amount, "CHF");
     }
 }
