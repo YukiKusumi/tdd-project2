@@ -7,6 +7,9 @@ class Money
 
     public function equals(self $other): bool
     {
+        if (!($other instanceof Money)){
+            return false;
+        }
         return $this->amount === $other->amount;
     }
 
