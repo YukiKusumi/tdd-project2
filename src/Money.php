@@ -1,7 +1,7 @@
 <?php
 namespace Yukikusumi\MyTddProject2;
 
-class Money
+class Money implements Expression
 {
     protected int $amount;
     protected string $currency;
@@ -37,5 +37,10 @@ class Money
     public static function franc(int $amount): Money
     {
         return new Money($amount, "CHF");
+    }
+
+    public function plus($addend)
+    {
+        return new Money($this->amount + $addend->amount, $this->currency);
     }
 }
