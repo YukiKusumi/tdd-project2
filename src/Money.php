@@ -1,12 +1,15 @@
 <?php
 namespace Yukikusumi\MyTddProject2;
 
-abstract class Money
+class Money
 {
     protected int $amount;
     protected string $currency;
 
-    abstract public function times(int $multiplier): Money;
+    public function times(int $multiplier): Money
+    {
+        return new Money($this->amount * $multiplier, $this->currency);
+    }
 
     public function __construct(int $amount, string $currency)
     {
@@ -19,9 +22,11 @@ abstract class Money
         return $this->currency;
     }
 
-    public function equals(self $other): bool
-    {
-        return $this->amount === $other->amount && get_class($this) === get_class($other);
+    public function equals(Object $object){
+        if (!($object instanceof Money)){
+            return false;
+        }
+        return $this->amount == $object->amount && $this->currency == $object->currency;
     }
 
     public static function dollar(int $amount): Money
