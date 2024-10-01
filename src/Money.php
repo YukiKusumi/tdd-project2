@@ -3,7 +3,7 @@ namespace Yukikusumi\MyTddProject2;
 
 class Money implements Expression
 {
-    protected int $amount;
+    public int $amount;
     protected string $currency;
 
     public function times(int $multiplier): Money
@@ -41,6 +41,11 @@ class Money implements Expression
 
     public function plus($addend)
     {
-        return new Money($this->amount + $addend->amount, $this->currency);
+        return new Sum($this, $addend);
+    }
+
+    public function reduce(string $to): Money
+    {
+        return $this;
     }
 }
