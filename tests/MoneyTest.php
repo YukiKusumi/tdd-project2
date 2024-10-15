@@ -5,6 +5,7 @@ use Yukikusumi\MyTddProject2\Bank;
 use Yukikusumi\MyTddProject2\Franc;
 use Yukikusumi\MyTddProject2\Money;
 use Yukikusumi\MyTddProject2\Sum;
+use Yukikusumi\MyTddProject2\WasRun;
 
 class MoneyTest extends TestCase
 {
@@ -99,5 +100,23 @@ class MoneyTest extends TestCase
         $sum = (new Sum($fiveBucks, $tenFrancs))->times(2);
         $result = $bank->reduce($sum, "USD");
         $this->assertEquals(Money::dollar(20), $result);
+    }
+
+    public function testRun() {
+        $test = new WasRun("testMethod");
+        $this->assertEquals(null, $test->wasRun);
+        echo $test->wasRun ? 'true' : 'false';
+        echo "\n";
+        $test->run();
+        $this->assertEquals(1, $test->wasRun);
+        echo $test->wasRun;
+    }
+
+    public function testRunning()
+    {
+        $test = new WasRun("testMethod");
+        $this->assertFalse($test->wasRun);
+        $test->run();
+        $this->assertTrue($test->wasRun);
     }
 }
